@@ -1,5 +1,7 @@
 {
   "tasks": {
-    "dev": "deno run --watch main.ts"
+    "dev": "deno run --watch main.ts",
+    "test": "deno test --allow-run=deno --allow-read=./__snapshots__ --allow-write=./__snapshots__",
+    "snapshot:update": "deno task test -- --update"
   }
 }
