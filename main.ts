@@ -1,4 +1,5 @@
 import { Command } from "cliffy/command/mod.ts";
+import { action } from "./action.ts";
 
 export const command = new Command()
   .name("pr-collector")
@@ -6,10 +7,10 @@ export const command = new Command()
   .description("Collect PRs from multiple GitHub repositories.")
   .usage("[options] [REPOSITORY_ARGS]")
   .arguments("<REPOSITORY_ARGS:string[]>")
-  .action((options, repositoryArgs) => {
-    console.debug(options);
-    console.debug(repositoryArgs);
-  });
+  .env("GITHUB_USER_TOKEN=<token:string>", "GitHub Personal Access token.", {
+    required: true,
+  })
+  .action(action);
 
 // Learn more at https://deno.land/manual/examples/module_metadata#concepts
 if (import.meta.main) {
