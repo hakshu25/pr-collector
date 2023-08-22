@@ -1,4 +1,4 @@
-import { snapshotTest } from "https://deno.land/x/cliffy@v1.0.0-rc.3/testing/mod.ts";
+import { snapshotTest } from "cliffy/testing/mod.ts";
 import { command } from "./main.ts";
 
 await snapshotTest({

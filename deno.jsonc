@@ -3,5 +3,8 @@
     "dev": "deno run --watch main.ts",
     "test": "deno test --allow-run=deno --allow-read=./__snapshots__ --allow-write=./__snapshots__",
     "snapshot:update": "deno task test -- --update"
+  },
+  "imports": {
+    "cliffy/": "https://deno.land/x/cliffy@v1.0.0-rc.3/"
   }
 }
