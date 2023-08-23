@@ -9,7 +9,7 @@ interface ViewerQueryResponse {
 }
 
 const viewerQuery = `
-query {
+query loginUserName {
   viewer {
     login
   }
