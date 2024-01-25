@@ -1,5 +1,77 @@
 {
-  "version": "2",
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "npm:@octokit/graphql@7.0.2": "npm:@octokit/graphql@7.0.2",
+      "npm:@types/node": "npm:@types/node@18.16.19"
+    },
+    "npm": {
+      "@octokit/endpoint@9.0.4": {
+        "integrity": "sha512-DWPLtr1Kz3tv8L0UvXTDP1fNwM0S+z6EJpRcvH66orY6Eld4XBMCSYsaWp4xIm61jTWxK68BrR7ibO+vSDnZqw==",
+        "dependencies": {
+          "@octokit/types": "@octokit/types@12.4.0",
+          "universal-user-agent": "universal-user-agent@6.0.1"
+        }
+      },
+      "@octokit/graphql@7.0.2": {
+        "integrity": "sha512-OJ2iGMtj5Tg3s6RaXH22cJcxXRi7Y3EBqbHTBRq+PQAqfaS8f/236fUrWhfSn8P4jovyzqucxme7/vWSSZBX2Q==",
+        "dependencies": {
+          "@octokit/request": "@octokit/request@8.1.6",
+          "@octokit/types": "@octokit/types@12.4.0",
+          "universal-user-agent": "universal-user-agent@6.0.1"
+        }
+      },
+      "@octokit/openapi-types@19.1.0": {
+        "integrity": "sha512-6G+ywGClliGQwRsjvqVYpklIfa7oRPA0vyhPQG/1Feh+B+wU0vGH1JiJ5T25d3g1JZYBHzR2qefLi9x8Gt+cpw==",
+        "dependencies": {}
+      },
+      "@octokit/request-error@5.0.1": {
+        "integrity": "sha512-X7pnyTMV7MgtGmiXBwmO6M5kIPrntOXdyKZLigNfQWSEQzVxR4a4vo49vJjTWX70mPndj8KhfT4Dx+2Ng3vnBQ==",
+        "dependencies": {
+          "@octokit/types": "@octokit/types@12.4.0",
+          "deprecation": "deprecation@2.3.1",
+          "once": "once@1.4.0"
+        }
+      },
+      "@octokit/request@8.1.6": {
+        "integrity": "sha512-YhPaGml3ncZC1NfXpP3WZ7iliL1ap6tLkAp6MvbK2fTTPytzVUyUesBBogcdMm86uRYO5rHaM1xIWxigWZ17MQ==",
+        "dependencies": {
+          "@octokit/endpoint": "@octokit/endpoint@9.0.4",
+          "@octokit/request-error": "@octokit/request-error@5.0.1",
+          "@octokit/types": "@octokit/types@12.4.0",
+          "universal-user-agent": "universal-user-agent@6.0.1"
+        }
+      },
+      "@octokit/types@12.4.0": {
+        "integrity": "sha512-FLWs/AvZllw/AGVs+nJ+ELCDZZJk+kY0zMen118xhL2zD0s1etIUHm1odgjP7epxYU1ln7SZxEUWYop5bhsdgQ==",
+        "dependencies": {
+          "@octokit/openapi-types": "@octokit/openapi-types@19.1.0"
+        }
+      },
+      "@types/node@18.16.19": {
+        "integrity": "sha512-IXl7o+R9iti9eBW4Wg2hx1xQDig183jj7YLn8F7udNceyfkbn1ZxmzZXuak20gR40D7pIkIY1kYGx5VIGbaHKA==",
+        "dependencies": {}
+      },
+      "deprecation@2.3.1": {
+        "integrity": "sha512-xmHIy4F3scKVwMsQ4WnVaS8bHOx0DmVwRywosKhaILI0ywMDWPtBSku2HNxRvF7jtwDRsoEwYQSfbxj8b7RlJQ==",
+        "dependencies": {}
+      },
+      "once@1.4.0": {
+        "integrity": "sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==",
+        "dependencies": {
+          "wrappy": "wrappy@1.0.2"
+        }
+      },
+      "universal-user-agent@6.0.1": {
+        "integrity": "sha512-yCzhz6FN2wU1NiiQRogkTQszlQSlpWaw8SvVegAc+bDxbzHgh1vX8uIe8OYyMH6DwH+sdTJsgMl36+mSMdRJIQ==",
+        "dependencies": {}
+      },
+      "wrappy@1.0.2": {
+        "integrity": "sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==",
+        "dependencies": {}
+      }
+    }
+  },
   "remote": {
     "https://deno.land/std@0.196.0/_util/diff.ts": "1a3c044aedf77647d6cac86b798c6417603361b66b54c53331b312caeb447aea",
     "https://deno.land/std@0.196.0/_util/os.ts": "d932f56d41e4f6a6093d56044e29ce637f8dcc43c5a90af43504a889cf1775e3",
@@ -195,16 +267,5 @@
     "https://esm.sh/v131/universal-user-agent@6.0.0/denonext/universal-user-agent.mjs": "2969647abd054007e6d838dd2ecc7de9c513c18c43322dfa3de57eec8d2d6447",
     "https://esm.sh/v131/web-encoding@1.1.5/denonext/web-encoding.mjs": "d61b2cf4903fbaf454ccf2cfd7cddfe0068bb633d46277b9b3318e22a2f642c7",
     "https://esm.sh/v131/wrappy@1.0.2/denonext/wrappy.mjs": "3c31e4782e0307cf56b319fcec6110f925dafe6cb47a8fa23350d480f5fa8b06"
-  },
-  "npm": {
-    "specifiers": {
-      "@types/node": "@types/node@18.16.19"
-    },
-    "packages": {
-      "@types/node@18.16.19": {
-        "integrity": "sha512-IXl7o+R9iti9eBW4Wg2hx1xQDig183jj7YLn8F7udNceyfkbn1ZxmzZXuak20gR40D7pIkIY1kYGx5VIGbaHKA==",
-        "dependencies": {}
-      }
-    }
   }
 }
