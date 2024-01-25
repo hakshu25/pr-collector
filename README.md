@@ -17,7 +17,7 @@ brew install pr-collector
 Need to set the following environment variables before using this tool.
 
 ```bash
-GITHUB_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+export GITHUB_USER_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ## Usage

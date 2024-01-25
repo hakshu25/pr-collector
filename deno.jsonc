@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "dev": "deno run --allow-env=GITHUB_TOKEN,HOME --allow-net=api.github.com main.ts",
+    "dev": "deno run --allow-env=GITHUB_USER_TOKEN,HOME --allow-net=api.github.com main.ts",
     "test": "deno test --allow-run=deno --allow-read=./__snapshots__ --allow-write=./__snapshots__",
     "snapshot:update": "deno task test -- --update"
   },
