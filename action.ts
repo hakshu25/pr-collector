@@ -1,4 +1,5 @@
 import { buildGraphQLClient, fetchPullRequests } from "./github.ts";
+import { render } from "./renderer.ts";
 
 interface ActionOptions {
   githubUserToken: string;
@@ -18,8 +19,6 @@ export const action = async (
   const client = buildGraphQLClient(githubUserToken);
 
   try {
-    // TODO: Print PRs in a table. ⇛ cliffy/table
-    // TODO: Print PRs in a table with colors.
     // TODO: Fetch PRs from all repositories.
     if (!validateState(state)) {
       throw new Error(`Invalid state: ${state}`);
@@ -30,7 +29,8 @@ export const action = async (
       repositoryArgs[0],
       state,
     );
-    console.log(pullRequests);
+
+    render(pullRequests);
   } catch (e) {
     console.error(e);
     Deno.exit(1);
