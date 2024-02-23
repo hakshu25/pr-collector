@@ -22,7 +22,10 @@ export const command = new Command()
     'Filter PRs by state. Default to "open".',
     { default: "open" },
   )
-  .option('-u --user <user:string>', 'GitHub user name. Default to the authenticated user.')
+  .option(
+    "-u --user <user:string>",
+    "GitHub user name. Default to the authenticated user.",
+  )
   .action(action);
 
 // Learn more at https://deno.land/manual/examples/module_metadata#concepts
