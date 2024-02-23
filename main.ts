@@ -1,5 +1,13 @@
-import { Command } from "cliffy/command/mod.ts";
+import { Command, EnumType } from "cliffy/command/mod.ts";
 import { action } from "./action.ts";
+
+enum PRState {
+  Open = "open",
+  Closed = "closed",
+  Merged = "merged",
+}
+
+const PRStateType = new EnumType(PRState);
 
 export const command = new Command()
   .name("pr-collector")
@@ -10,6 +18,12 @@ export const command = new Command()
   .env("GITHUB_USER_TOKEN=<token:string>", "GitHub Personal Access token.", {
     required: true,
   })
+  .type("state", PRStateType)
+  .option(
+    "-s --state <state:state>",
+    'Filter PRs by state. Default to "open".',
+    { default: "open" },
+  )
   .action(action);
 
 // Learn more at https://deno.land/manual/examples/module_metadata#concepts

@@ -1,6 +1,6 @@
-import { graphql } from "@octokit/graphql";
+import { Octokit } from "octokit";
 
-type GraphQlClient = typeof graphql;
+type GraphQlClient = Octokit['graphql'];
 
 interface ViewerQueryResponse {
   viewer: {
@@ -22,9 +22,9 @@ const fetchLoggedInUser = async (client: GraphQlClient): Promise<string> => {
 };
 
 const pullRequestsQuery = `
-query pullRequests($owner: String!, $repo: String!) {
+query pullRequests($owner: String!, $repo: String!, $state: PullRequestState!) {
   repository(owner: $owner, name: $repo) {
-    pullRequests(first: 100) {
+    pullRequests(first: 100, states: [$state]) {
       nodes {
         title,
         number,
@@ -35,15 +35,12 @@ query pullRequests($owner: String!, $repo: String!) {
 }
 `;
 
-export const buildGraphQLClient = (token: string): typeof graphql => {
-  return graphql.defaults({
-    headers: {
-      authorization: `token ${token}`,
-    },
-  });
+export const buildGraphQLClient = (token: string): Octokit['graphql'] => {
+  const client = new Octokit({ auth: token, request: fetch })
+  return client.graphql;
 };
 
-interface PullRequest {
+export interface PullRequest {
   title: string;
   number: number;
   url: string;
@@ -58,16 +55,24 @@ interface PullRequestsQueryResponse {
 export const fetchPullRequests = async (
   client: GraphQlClient,
   repo: string,
+  state: "open" | "closed" | "merged" = "open",
 ): Promise<PullRequest[]> => {
   const owner = await fetchLoggedInUser(client);
-  const { repository: { pullRequests } } = await client<
+  let pullRequests: PullRequest[] = [];
+  try {
+  const { repository } = await client<
     PullRequestsQueryResponse
   >(
     pullRequestsQuery,
     {
       owner,
       repo,
+      state: state.toUpperCase(),
     },
   );
+  pullRequests = repository.pullRequests;
+  } catch (e) {
+    console.error(e);
+  }
   return pullRequests;
 };
