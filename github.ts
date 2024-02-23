@@ -48,7 +48,9 @@ export interface PullRequest {
 
 interface PullRequestsQueryResponse {
   repository: {
-    pullRequests: PullRequest[];
+    pullRequests: {
+      nodes: PullRequest[];
+    }
   };
 }
 
@@ -70,7 +72,7 @@ export const fetchPullRequests = async (
       state: state.toUpperCase(),
     },
   );
-  pullRequests = repository.pullRequests;
+  pullRequests = repository.pullRequests.nodes;
   } catch (e) {
     console.error(e);
   }
