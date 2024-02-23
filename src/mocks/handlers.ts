@@ -1,5 +1,5 @@
 import { graphql, RequestHandler } from "msw";
-import { PullRequest } from "../../github.ts";
+import { PullRequest } from "../github.ts";
 
 export const handlers: RequestHandler[] = [
   graphql.query("loginUserName", (_, res, ctx) => {

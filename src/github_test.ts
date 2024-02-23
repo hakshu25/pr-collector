@@ -1,7 +1,7 @@
 import { assertEquals } from "assert/mod.ts";
 import { afterAll, afterEach, beforeAll, describe, it } from "testing/bdd.ts";
 import { buildGraphQLClient, fetchPullRequests } from "./github.ts";
-import { server } from "./src/mocks/server.ts";
+import { server } from "./mocks/server.ts";
 
 describe("fetchPullRequests()", () => {
   const client = buildGraphQLClient("test-token");
