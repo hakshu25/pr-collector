@@ -4,29 +4,28 @@ import { render } from "./renderer.ts";
 interface ActionOptions {
   githubUserToken: string;
   state: string | "open" | "closed" | "merged";
+  user?: string;
 }
 
 const validateState = (
   state: string,
-): state is "open" | "closed" | "merged" => {
-  return ["open", "closed", "merged"].includes(state);
+): state is "open" | "closed" => {
+  return ["open", "closed"].includes(state);
 };
 
 export const action = async (
-  { githubUserToken, state }: ActionOptions,
-  repositoryArgs: string[],
+  { githubUserToken, state, user }: ActionOptions,
 ) => {
   const client = buildGraphQLClient(githubUserToken);
 
   try {
-    // TODO: Fetch PRs from all repositories.
     if (!validateState(state)) {
       throw new Error(`Invalid state: ${state}`);
     }
 
     const pullRequests = await fetchPullRequests(
       client,
-      repositoryArgs[0],
+      user,
       state,
     );
 

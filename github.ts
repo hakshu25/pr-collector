@@ -21,13 +21,13 @@ const fetchLoggedInUser = async (client: GraphQlClient): Promise<string> => {
   return login;
 };
 
-const pullRequestsQuery = `
-query pullRequests($owner: String!, $repo: String!, $state: PullRequestState!) {
-  repository(owner: $owner, name: $repo) {
-    pullRequests(first: 100, states: [$state]) {
-      nodes {
-        title,
-        number,
+const pullRequestsQuery = (state: "open" | "closed", user: string) => `
+query {
+  search(query: "is:pr state:${state} user:${user}", type: ISSUE, first: 100) {
+    nodes {
+      ... on PullRequest {
+        title
+        number
         url
       }
     }
@@ -47,32 +47,26 @@ export interface PullRequest {
 }
 
 interface PullRequestsQueryResponse {
-  repository: {
-    pullRequests: {
-      nodes: PullRequest[];
-    }
+  search: {
+    nodes: PullRequest[];
   };
 }
 
 export const fetchPullRequests = async (
   client: GraphQlClient,
-  repo: string,
-  state: "open" | "closed" | "merged" = "open",
+  user: string | undefined,
+  state: "open" | "closed" = "open",
 ): Promise<PullRequest[]> => {
-  const owner = await fetchLoggedInUser(client);
+  const reposOwner = user || await fetchLoggedInUser(client);
   let pullRequests: PullRequest[] = [];
   try {
-  const { repository } = await client<
+  const query = pullRequestsQuery(state, reposOwner)
+  const { search: { nodes }} = await client<
     PullRequestsQueryResponse
   >(
-    pullRequestsQuery,
-    {
-      owner,
-      repo,
-      state: state.toUpperCase(),
-    },
+    query,
   );
-  pullRequests = repository.pullRequests.nodes;
+  pullRequests = nodes;
   } catch (e) {
     console.error(e);
   }

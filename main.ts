@@ -4,7 +4,6 @@ import { action } from "./action.ts";
 enum PRState {
   Open = "open",
   Closed = "closed",
-  Merged = "merged",
 }
 
 const PRStateType = new EnumType(PRState);
@@ -13,8 +12,7 @@ export const command = new Command()
   .name("pr-collector")
   .version("1.0.0")
   .description("Collect PRs from multiple GitHub repositories.")
-  .usage("[options] [REPOSITORY_ARGS]")
-  .arguments("<REPOSITORY_ARGS:string[]>")
+  .usage("[options]")
   .env("GITHUB_USER_TOKEN=<token:string>", "GitHub Personal Access token.", {
     required: true,
   })
@@ -24,6 +22,7 @@ export const command = new Command()
     'Filter PRs by state. Default to "open".',
     { default: "open" },
   )
+  .option('-u --user <user:string>', 'GitHub user name. Default to the authenticated user.')
   .action(action);
 
 // Learn more at https://deno.land/manual/examples/module_metadata#concepts
