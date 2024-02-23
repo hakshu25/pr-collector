@@ -17,26 +17,29 @@ brew install pr-collector
 Need to set the following environment variables before using this tool.
 
 ```bash
-GITHUB_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+export GITHUB_USER_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ## Usage
 
 ```bash
 $ pr-collector --help
-Usage: pr-collector [OPTIONS] [REPOSITORY_ARGS]...
+
+Usage:   pr-collector [options]
+Version: 1.0.0                 
+
+Description:
 
   Collect PRs from multiple GitHub repositories.
 
-Arguments:
-  [REPOSITORY_ARGS]... List of repositories
-
 Options:
-  -h, --help     Print help
-  -v, --version  Print version
-  -t, --title    TEXT Title of the PR
-  -l, --label    TEXT Label of the PR
-  --author,      TEXT Author of the PR
-  --assignee     TEXT Assignee of the PR
-  -r, --reviewer TEXT Reviewer of the PR
+
+  -h, --help              - Show this help.                                                                                  
+  -V, --version           - Show the version number for this program.                                                        
+  -s, --state    <state>  - Filter PRs by state. Default to "open".               (Default: "open", Values: "open", "closed")
+  -u, --user     <user>   - GitHub user name. Default to the authenticated user.                                             
+
+Environment variables:
+
+  GITHUB_USER_TOKEN  <token>  - GitHub Personal Access token.  (required)
 ```

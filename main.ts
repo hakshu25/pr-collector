@@ -1,8 +1,34 @@
-export function add(a: number, b: number): number {
-  return a + b;
+import { Command, EnumType } from "cliffy/command/mod.ts";
+import { action } from "./action.ts";
+
+enum PRState {
+  Open = "open",
+  Closed = "closed",
 }
+
+const PRStateType = new EnumType(PRState);
+
+export const command = new Command()
+  .name("pr-collector")
+  .version("1.0.0")
+  .description("Collect PRs from multiple GitHub repositories.")
+  .usage("[options]")
+  .env("GITHUB_USER_TOKEN=<token:string>", "GitHub Personal Access token.", {
+    required: true,
+  })
+  .type("state", PRStateType)
+  .option(
+    "-s --state <state:state>",
+    'Filter PRs by state. Default to "open".',
+    { default: "open" },
+  )
+  .option(
+    "-u --user <user:string>",
+    "GitHub user name. Default to the authenticated user.",
+  )
+  .action(action);
 
 // Learn more at https://deno.land/manual/examples/module_metadata#concepts
 if (import.meta.main) {
-  console.log("Add 2 + 3 =", add(2, 3));
+  await command.parse(Deno.args);
 }
