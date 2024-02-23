@@ -1,6 +1,6 @@
 import { Octokit } from "octokit";
 
-type GraphQlClient = Octokit['graphql'];
+type GraphQlClient = Octokit["graphql"];
 
 interface ViewerQueryResponse {
   viewer: {
@@ -21,8 +21,8 @@ const fetchLoggedInUser = async (client: GraphQlClient): Promise<string> => {
   return login;
 };
 
-const pullRequestsQuery = (state: "open" | "closed", user: string) => `
-query {
+const searchPullRequestsQuery = (state: "open" | "closed", user: string) => `
+query searchPullRequests {
   search(query: "is:pr state:${state} user:${user}", type: ISSUE, first: 100) {
     nodes {
       ... on PullRequest {
@@ -35,8 +35,8 @@ query {
 }
 `;
 
-export const buildGraphQLClient = (token: string): Octokit['graphql'] => {
-  const client = new Octokit({ auth: token, request: fetch })
+export const buildGraphQLClient = (token: string): Octokit["graphql"] => {
+  const client = new Octokit({ auth: token, request: fetch });
   return client.graphql;
 };
 
@@ -60,13 +60,13 @@ export const fetchPullRequests = async (
   const reposOwner = user || await fetchLoggedInUser(client);
   let pullRequests: PullRequest[] = [];
   try {
-  const query = pullRequestsQuery(state, reposOwner)
-  const { search: { nodes }} = await client<
-    PullRequestsQueryResponse
-  >(
-    query,
-  );
-  pullRequests = nodes;
+    const query = searchPullRequestsQuery(state, reposOwner);
+    const { search: { nodes } } = await client<
+      PullRequestsQueryResponse
+    >(
+      query,
+    );
+    pullRequests = nodes;
   } catch (e) {
     console.error(e);
   }
