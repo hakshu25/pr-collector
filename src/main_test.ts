@@ -4,7 +4,7 @@ import { command } from "./main.ts";
 await snapshotTest({
   name: "pr-collector",
   meta: import.meta,
-  dir: '../__snapshots__',
+  dir: "../__snapshots__",
   denoArgs: ["--allow-net", "--allow-env", "--allow-read"],
   steps: {
     "should output help with -h flag": { args: ["-h"] },
