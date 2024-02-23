@@ -5,6 +5,7 @@ await snapshotTest({
   name: "pr-collector",
   meta: import.meta,
   osSuffix: ["darwin"],
+  denoArgs: ["--allow-net", "--allow-env", "--allow-read"],
   steps: {
     "should output help with -h flag": { args: ["-h"] },
     "should output help with --help flag": { args: ["--help"] },

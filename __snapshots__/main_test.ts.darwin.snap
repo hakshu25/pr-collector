@@ -2,9 +2,9 @@ export const snapshot = {};
 
 snapshot[`pr-collector > should output help with -h flag 1`] = `
 stdout:
-"
-Usage:   pr-collector [options] [REPOSITORY_ARGS]
-Version: 1.0.0                                   
+'
+Usage:   pr-collector [options]
+Version: 1.0.0                 
 
 Description:
 
@@ -12,19 +12,25 @@ Description:
 
 Options:
 
-  -h, --help     - Show this help.                            
-  -V, --version  - Show the version number for this program.  
+  -h, --help              - Show this help.                                                                                  
+  -V, --version           - Show the version number for this program.                                                        
+  -s, --state    <state>  - Filter PRs by state. Default to "open".               (Default: \\x1b[32m"open"\\x1b[39m, Values: \\x1b[32m"open"\\x1b[39m, \\x1b[32m"closed"\\x1b[39m)
+  -u, --user     <user>   - GitHub user name. Default to the authenticated user.                                             
 
-"
+Environment variables:
+
+  GITHUB_USER_TOKEN  <token>  - GitHub Personal Access token.  (required)
+
+'
 stderr:
 ""
 `;
 
 snapshot[`pr-collector > should output help with --help flag 1`] = `
 stdout:
-"
-Usage:   pr-collector [options] [REPOSITORY_ARGS]
-Version: 1.0.0                                   
+'
+Usage:   pr-collector [options]
+Version: 1.0.0                 
 
 Description:
 
@@ -32,10 +38,16 @@ Description:
 
 Options:
 
-  -h, --help     - Show this help.                            
-  -V, --version  - Show the version number for this program.  
+  -h, --help              - Show this help.                                                                                  
+  -V, --version           - Show the version number for this program.                                                        
+  -s, --state    <state>  - Filter PRs by state. Default to "open".               (Default: \\x1b[32m"open"\\x1b[39m, Values: \\x1b[32m"open"\\x1b[39m, \\x1b[32m"closed"\\x1b[39m)
+  -u, --user     <user>   - GitHub user name. Default to the authenticated user.                                             
 
-"
+Environment variables:
+
+  GITHUB_USER_TOKEN  <token>  - GitHub Personal Access token.  (required)
+
+'
 stderr:
 ""
 `;
@@ -58,9 +70,9 @@ stderr:
 
 snapshot[`pr-collector > should print help message and error message without args 1`] = `
 stdout:
-"
-Usage:   pr-collector [options] [REPOSITORY_ARGS]
-Version: 1.0.0                                   
+'
+Usage:   pr-collector [options]
+Version: 1.0.0                 
 
 Description:
 
@@ -68,21 +80,27 @@ Description:
 
 Options:
 
-  -h, --help     - Show this help.                            
-  -V, --version  - Show the version number for this program.  
+  -h, --help              - Show this help.                                                                                  
+  -V, --version           - Show the version number for this program.                                                        
+  -s, --state    <state>  - Filter PRs by state. Default to "open".               (Default: \\x1b[32m"open"\\x1b[39m, Values: \\x1b[32m"open"\\x1b[39m, \\x1b[32m"closed"\\x1b[39m)
+  -u, --user     <user>   - GitHub user name. Default to the authenticated user.                                             
 
-"
+Environment variables:
+
+  GITHUB_USER_TOKEN  <token>  - GitHub Personal Access token.  (required)
+
+'
 stderr:
-"  error: Missing argument(s): REPOSITORY_ARGS
+'  error: Missing required environment variable "GITHUB_USER_TOKEN".
 
-"
+'
 `;
 
 snapshot[`pr-collector > should print error message for unknown option 1`] = `
 stdout:
-"
-Usage:   pr-collector [options] [REPOSITORY_ARGS]
-Version: 1.0.0                                   
+'
+Usage:   pr-collector [options]
+Version: 1.0.0                 
 
 Description:
 
@@ -90,12 +108,18 @@ Description:
 
 Options:
 
-  -h, --help     - Show this help.                            
-  -V, --version  - Show the version number for this program.  
+  -h, --help              - Show this help.                                                                                  
+  -V, --version           - Show the version number for this program.                                                        
+  -s, --state    <state>  - Filter PRs by state. Default to "open".               (Default: \\x1b[32m"open"\\x1b[39m, Values: \\x1b[32m"open"\\x1b[39m, \\x1b[32m"closed"\\x1b[39m)
+  -u, --user     <user>   - GitHub user name. Default to the authenticated user.                                             
 
-"
+Environment variables:
+
+  GITHUB_USER_TOKEN  <token>  - GitHub Personal Access token.  (required)
+
+'
 stderr:
-'  error: Unknown option "--unknown-option". Did you mean option "--version"?
+'  error: Missing required environment variable "GITHUB_USER_TOKEN".
 
 '
 `;
