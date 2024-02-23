@@ -123,3 +123,31 @@ stderr:
 
 '
 `;
+
+snapshot[`pr-collector > should print error message for unknown command 1`] = `
+stdout:
+'
+Usage:   pr-collector [options]
+Version: 1.0.0                 
+
+Description:
+
+  Collect PRs from multiple GitHub repositories.
+
+Options:
+
+  -h, --help              - Show this help.                                                                                  
+  -V, --version           - Show the version number for this program.                                                        
+  -s, --state    <state>  - Filter PRs by state. Default to "open".               (Default: \\x1b[32m"open"\\x1b[39m, Values: \\x1b[32m"open"\\x1b[39m, \\x1b[32m"closed"\\x1b[39m)
+  -u, --user     <user>   - GitHub user name. Default to the authenticated user.                                             
+
+Environment variables:
+
+  GITHUB_USER_TOKEN  <token>  - GitHub Personal Access token.  (required)
+
+'
+stderr:
+'  error: Missing required environment variable "GITHUB_USER_TOKEN".
+
+'
+`;

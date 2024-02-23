@@ -18,6 +18,10 @@ await snapshotTest({
       args: ["--unknown-option"],
       canFail: true,
     },
+    "should print error message for unknown command": {
+      args: ["unknown-command"],
+      canFail: true,
+    },
   },
   async fn() {
     await command.parse();
