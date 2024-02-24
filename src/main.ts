@@ -26,6 +26,11 @@ export const command = new Command()
     "-u --user <user:string>",
     "GitHub user name. Default to the authenticated user.",
   )
+  .option(
+    "-l --limit <limit:number>",
+    "Limit the number of PRs to fetch. Default to 100.",
+    { default: 100 },
+  )
   .action(action);
 
 // Learn more at https://deno.land/manual/examples/module_metadata#concepts

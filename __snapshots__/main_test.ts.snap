@@ -16,6 +16,7 @@ Options:
   -V, --version           - Show the version number for this program.                                                        
   -s, --state    <state>  - Filter PRs by state. Default to "open".               (Default: \\x1b[32m"open"\\x1b[39m, Values: \\x1b[32m"open"\\x1b[39m, \\x1b[32m"closed"\\x1b[39m)
   -u, --user     <user>   - GitHub user name. Default to the authenticated user.                                             
+  -l, --limit    <limit>  - Limit the number of PRs to fetch. Default to 100.     (Default: \\x1b[33m100\\x1b[39m)                             
 
 Environment variables:
 
@@ -42,6 +43,7 @@ Options:
   -V, --version           - Show the version number for this program.                                                        
   -s, --state    <state>  - Filter PRs by state. Default to "open".               (Default: \\x1b[32m"open"\\x1b[39m, Values: \\x1b[32m"open"\\x1b[39m, \\x1b[32m"closed"\\x1b[39m)
   -u, --user     <user>   - GitHub user name. Default to the authenticated user.                                             
+  -l, --limit    <limit>  - Limit the number of PRs to fetch. Default to 100.     (Default: \\x1b[33m100\\x1b[39m)                             
 
 Environment variables:
 
@@ -84,6 +86,7 @@ Options:
   -V, --version           - Show the version number for this program.                                                        
   -s, --state    <state>  - Filter PRs by state. Default to "open".               (Default: \\x1b[32m"open"\\x1b[39m, Values: \\x1b[32m"open"\\x1b[39m, \\x1b[32m"closed"\\x1b[39m)
   -u, --user     <user>   - GitHub user name. Default to the authenticated user.                                             
+  -l, --limit    <limit>  - Limit the number of PRs to fetch. Default to 100.     (Default: \\x1b[33m100\\x1b[39m)                             
 
 Environment variables:
 
@@ -112,6 +115,7 @@ Options:
   -V, --version           - Show the version number for this program.                                                        
   -s, --state    <state>  - Filter PRs by state. Default to "open".               (Default: \\x1b[32m"open"\\x1b[39m, Values: \\x1b[32m"open"\\x1b[39m, \\x1b[32m"closed"\\x1b[39m)
   -u, --user     <user>   - GitHub user name. Default to the authenticated user.                                             
+  -l, --limit    <limit>  - Limit the number of PRs to fetch. Default to 100.     (Default: \\x1b[33m100\\x1b[39m)                             
 
 Environment variables:
 
@@ -140,6 +144,7 @@ Options:
   -V, --version           - Show the version number for this program.                                                        
   -s, --state    <state>  - Filter PRs by state. Default to "open".               (Default: \\x1b[32m"open"\\x1b[39m, Values: \\x1b[32m"open"\\x1b[39m, \\x1b[32m"closed"\\x1b[39m)
   -u, --user     <user>   - GitHub user name. Default to the authenticated user.                                             
+  -l, --limit    <limit>  - Limit the number of PRs to fetch. Default to 100.     (Default: \\x1b[33m100\\x1b[39m)                             
 
 Environment variables:
 

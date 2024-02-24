@@ -23,6 +23,7 @@ describe("fetchPullRequests()", () => {
       client,
       "test-user",
       "open",
+      100,
     );
 
     assertEquals(pullRequests, [

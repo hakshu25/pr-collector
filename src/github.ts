@@ -21,9 +21,13 @@ const fetchLoggedInUser = async (client: GraphQlClient): Promise<string> => {
   return login;
 };
 
-const searchPullRequestsQuery = (state: "open" | "closed", user: string) => `
+const searchPullRequestsQuery = (
+  state: "open" | "closed",
+  user: string,
+  limit: number,
+) => `
 query searchPullRequests {
-  search(query: "is:pr state:${state} user:${user}", type: ISSUE, first: 100) {
+  search(query: "is:pr state:${state} user:${user}", type: ISSUE, first: ${limit}) {
     nodes {
       ... on PullRequest {
         title
@@ -56,11 +60,12 @@ export const fetchPullRequests = async (
   client: GraphQlClient,
   user: string | undefined,
   state: "open" | "closed" = "open",
+  limit: number,
 ): Promise<PullRequest[]> => {
   const reposOwner = user || await fetchLoggedInUser(client);
   let pullRequests: PullRequest[] = [];
   try {
-    const query = searchPullRequestsQuery(state, reposOwner);
+    const query = searchPullRequestsQuery(state, reposOwner, limit);
     const { search: { nodes } } = await client<
       PullRequestsQueryResponse
     >(

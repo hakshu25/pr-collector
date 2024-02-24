@@ -3,8 +3,9 @@ import { render } from "./renderer.ts";
 
 interface ActionOptions {
   githubUserToken: string;
-  state: string | "open" | "closed" | "merged";
+  state: string | "open" | "closed";
   user?: string;
+  limit: number;
 }
 
 const validateState = (
@@ -14,7 +15,7 @@ const validateState = (
 };
 
 export const action = async (
-  { githubUserToken, state, user }: ActionOptions,
+  { githubUserToken, state, user, limit }: ActionOptions,
 ) => {
   const client = buildGraphQLClient(githubUserToken);
 
@@ -27,6 +28,7 @@ export const action = async (
       client,
       user,
       state,
+      limit,
     );
 
     render(pullRequests);
