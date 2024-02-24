@@ -1,5 +1,4 @@
-import { Table } from "cliffy/table/table.ts";
-import { colors } from "cliffy/ansi/colors.ts";
+import { colors, Table } from "./deps/deps.ts";
 import { PullRequest } from "./github.ts";
 
 const applyIdColor = colors.green;

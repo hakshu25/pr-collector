@@ -1,4 +1,4 @@
-import { Command, EnumType } from "cliffy/command/mod.ts";
+import { Command, EnumType } from "./deps/deps.ts";
 import { action } from "./action.ts";
 
 enum PRState {

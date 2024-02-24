@@ -1,5 +1,11 @@
-import { assertEquals } from "assert/mod.ts";
-import { afterAll, afterEach, beforeAll, describe, it } from "testing/bdd.ts";
+import { assertEquals } from "./deps/test_deps.ts";
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+  it,
+} from "./deps/test_deps.ts";
 import { buildGraphQLClient, fetchPullRequests } from "./github.ts";
 import { server } from "./mocks/server.ts";
 

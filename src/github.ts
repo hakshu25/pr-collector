@@ -1,4 +1,4 @@
-import { Octokit } from "octokit";
+import { Octokit } from "./deps/deps.ts";
 
 type GraphQlClient = Octokit["graphql"];
 
