@@ -7,9 +7,7 @@ This is a simple tool to collect PRs from multiple GitHub repositories.
 ## Installation
 
 ```bash
-# MacOS
-brew tap hakshu25/pr-collector
-brew install pr-collector
+deno install --allow-net --allow-env -f --name pr-collector https://raw.githubusercontent.com/hakshu25/pr-collector/main/src/main.ts
 ```
 
 ## environment variables
