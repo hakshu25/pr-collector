@@ -7,9 +7,7 @@ This is a simple tool to collect PRs from multiple GitHub repositories.
 ## Installation
 
 ```bash
-# MacOS
-brew tap hakshu25/pr-collector
-brew install pr-collector
+deno install --allow-net --allow-env -f --name pr-collector https://raw.githubusercontent.com/hakshu25/pr-collector/main/src/main.ts
 ```
 
 ## environment variables
@@ -26,7 +24,7 @@ export GITHUB_USER_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 $ pr-collector --help
 
 Usage:   pr-collector [options]
-Version: 1.0.0                 
+Version: 1.0.0
 
 Description:
 
@@ -34,10 +32,11 @@ Description:
 
 Options:
 
-  -h, --help              - Show this help.                                                                                  
-  -V, --version           - Show the version number for this program.                                                        
+  -h, --help              - Show this help.
+  -V, --version           - Show the version number for this program.
   -s, --state    <state>  - Filter PRs by state. Default to "open".               (Default: "open", Values: "open", "closed")
-  -u, --user     <user>   - GitHub user name. Default to the authenticated user.                                             
+  -u, --user     <user>   - GitHub user name. Default to the authenticated user.
+  -l, --limit    <limit>  - Limit the number of PRs to fetch. Default to 100.     (Default: 100)
 
 Environment variables:
 
