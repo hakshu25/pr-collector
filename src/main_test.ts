@@ -1,4 +1,4 @@
-import { snapshotTest } from "cliffy/testing/mod.ts";
+import { snapshotTest } from "./deps/test_deps.ts";
 import { command } from "./main.ts";
 
 await snapshotTest({

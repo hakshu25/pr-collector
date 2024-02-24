@@ -1,4 +1,4 @@
-import { graphql, RequestHandler } from "msw";
+import { graphql, RequestHandler } from "../deps/test_deps.ts";
 import { PullRequest } from "../github.ts";
 
 export const handlers: RequestHandler[] = [
