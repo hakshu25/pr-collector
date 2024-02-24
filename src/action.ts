@@ -3,7 +3,7 @@ import { render } from "./renderer.ts";
 
 interface ActionOptions {
   githubUserToken: string;
-  state: string | "open" | "closed" | "merged";
+  state: string | "open" | "closed";
   user?: string;
 }
 
