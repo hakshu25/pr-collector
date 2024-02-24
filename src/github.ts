@@ -21,7 +21,11 @@ const fetchLoggedInUser = async (client: GraphQlClient): Promise<string> => {
   return login;
 };
 
-const searchPullRequestsQuery = (state: "open" | "closed", user: string, limit: number) => `
+const searchPullRequestsQuery = (
+  state: "open" | "closed",
+  user: string,
+  limit: number,
+) => `
 query searchPullRequests {
   search(query: "is:pr state:${state} user:${user}", type: ISSUE, first: ${limit}) {
     nodes {
